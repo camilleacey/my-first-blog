@@ -10,6 +10,17 @@
 
     <div>
                 <h1><a href="">Actual Blogposts</a></h1>
+                {% for post in posts %}
+                <div>
+       <p>       <a href="">{{ post.title }}</a>
+         <br>
+         by {{post.author}}
+         <br>
+          published on: {{ post.published_date }} </p>
+
+       <p>{{ post.text|linebreaks }}</p>
+   </div>
+              {% endfor %}
             </div>
 
     <div>
