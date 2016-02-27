@@ -1,35 +1,13 @@
-<html>
-<head>
-  <title> Camille's Starter Website</title></head>
-<body>
-  <div>
+{% extends 'blog/base.html' %}
 
-    <p>Hi there!</p>
-    <p> This is Camille working on good old HTML. This should be a snap, right? Riiiight?</p>
-</div>
-
-    <div>
-                <h1><a href="">Actual Blogposts</a></h1>
-                {% for post in posts %}
-                <div>
-       <p>       <a href="">{{ post.title }}</a>
-         <br>
-         by {{post.author}}
-         <br>
-          published on: {{ post.published_date }} </p>
-
-       <p>{{ post.text|linebreaks }}</p>
-   </div>
+{% block content %}
+              {% for post in posts %}
+                  <div class="post">
+                      <div class="date">
+                          <p>published: {{ post.published_date }}</p>
+                      </div>
+                      <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                      <p>{{ post.text|linebreaks }}</p>
+                  </div>
               {% endfor %}
-            </div>
-
-    <div>
-              <h1><a href="">Recent Tweets</a></h1>
-
-            </div>
-            <div>
-
-              <p>Kicking it old school!</p>
-          </div>
-</body>
-</html>
+{% endblock %}
